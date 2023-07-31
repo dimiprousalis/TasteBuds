@@ -1,19 +1,16 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Roboto Condensed", sans-serif;
 
 }
 
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0% 20%;
+  margin: 0% 12vw;
 }
 
 code {
@@ -21,18 +18,40 @@ code {
     monospace;
 }
 
-h4{
+h2 {
+  font-size: 1.5vw;
+  line-height: 1.5vw;
+}
+
+h4 {
   font-size: 1rem;
   color: rgb(56, 56, 56);
 }
 
-h3{
-  font-size: 1.5rem;
+h3 {
+  font-size: 1.4rem;
   color: rgb(56, 56, 56);
-  line-height: 2.5rem;
-  margin: 2rem 0rem;
+  margin: 1rem 0rem;
 }
 
-a{
+a {
   color: rgb(56, 56, 56);
+}
+
+@media (max-width: 800px) {
+  body {
+    margin: 0 5%;
+  }
+
+  h2 {
+    font-size: 0.9rem;
+    line-height: 0.9rem;
+  }
+}
+
+@media (min-width: 1600px) {
+h2 {
+    font-size: 1.1vw;
+    line-height: 1.1vw;
+  }
 }

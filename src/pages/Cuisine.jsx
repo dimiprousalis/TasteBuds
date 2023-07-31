@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from 'styled-components'
 import { Link, useParams } from "react-router-dom"
+import Card from '../components/Card'
 
 
 function Cuisine() {
@@ -11,8 +12,8 @@ function Cuisine() {
 
     //fetch api by cuisine type (mexican, italian, etc)
     const getCuisine = async (name) => {
-        //---------------- CHANGE BACK from 1 to remove number----------------//
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}&number=1`)
+        //---------------- CHANGE BACK from 3 to remove number----------------//
+        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}&number=3`)
         const recipes = await data.json();
         setCuisine(recipes.results);
     }
@@ -26,13 +27,7 @@ function Cuisine() {
         <Grid>
             {cuisine.map((item) => {
                 return (
-                    <Card key={item.id}>
-                        {/*Link to recipe/id to take you to recipe details when Card clicked on*/}
-                        <Link to={"/recipe/" + item.id}>
-                            <img src={item.image} alt="" />
-                            <h4>{item.title}</h4>
-                        </Link>
-                    </Card>
+                    <Card imageUrl={item.image} title={item.title} recipeURL ={"/recipe/" + item.id} />
                 )
             })}
         </Grid>
@@ -41,22 +36,10 @@ function Cuisine() {
 
 const Grid = styled.div`
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
 grid-gap:3rem;
+padding: 1rem;
 `;
 
-const Card = styled.div`
-img {
-    width: 100%;
-    border-radius: 2rem
-}
-a {
-    text-decoration: non;
-}
-h4 {
-    text-align: center;
-    padding: 1rem;
-}
-`;
 
 export default Cuisine

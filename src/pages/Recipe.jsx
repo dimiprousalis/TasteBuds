@@ -28,7 +28,7 @@ function Recipe() {
         <DetailWrapper>
             <div>
                 <h2>{details.title}</h2>
-                <img src="" alt="" />
+                <img src={details.image} alt="" />
             </div>
             <Info>
                 {/* when button clicked on setActiveTab to instructions and if activeTab is instructions then add the "active" class, else don't add a class  */}
@@ -66,8 +66,8 @@ function Recipe() {
 }
 
 const DetailWrapper = styled.div`
-    margin-top: 10rem;
-    margin-bottom: 5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     .active {
         background: linear-gradient(35deg, #494949, #313131);
@@ -86,7 +86,7 @@ const DetailWrapper = styled.div`
 `;
 
 const Button = styled.button`
-    padding: 1rem 2 rem;
+    padding: 1rem 2rem;
     color: #313131;
     background: white;
     border: 2px solid black;
@@ -95,7 +95,7 @@ const Button = styled.button`
 `;
 
 const Info = styled.div`
-    margin-left: 10rem;
+    margin-left: 5rem;
 `;
 
 export default Recipe

@@ -4,6 +4,7 @@ import React from 'react'
 import { Navbar } from "../components/Navbar";
 import Search from "../components/Search";
 import Category from "../components/Category";
+import Dessert from "../components/Dessert";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <Category />
         <Veggie />
         <Popular />
+        <Dessert />
       </div>
     </div>
   )

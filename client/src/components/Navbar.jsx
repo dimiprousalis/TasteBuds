@@ -1,7 +1,10 @@
-import { Box, AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { GiKnifeFork } from "react-icons/gi";
+import HomeIcon from '@mui/icons-material/Home';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const Navbar = () => {
 
@@ -17,20 +20,23 @@ export const Navbar = () => {
     return (
         <AppBar
             position="sticky">
-            <Toolbar sx={{ flexGrow: 1 }}>
-                <GiKnifeFork />
-                <Typography component="div" onClick={() => navigate("/home")} sx={{ flexGrow: 1 }}>
+            <Toolbar sx={{ display: 'flex', justifyContent: "flex-start" }}>
+                <HomeIcon sx={{ fontSize: "medium" }} />
+                <Button onClick={() => navigate("/home")} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
                     Home
-                </Typography>
-                <Typography component="div" onClick={() => navigate("/home")} sx={{ flexGrow: 1 }}>
-                    My Recipes
-                </Typography>
-                <Typography component="div" onClick={() => navigate("/home")} sx={{ flexGrow: 1 }}>
-                    Create Recipes
-                </Typography>
-                <Typography component="div" onClick={logout} sx={{ flexGrow: 1 }}>
+                </Button>
+                <FavoriteIcon sx={{ fontSize: "medium" }} />
+                <Button onClick={() => navigate("/home")} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
+                    Saved
+                </Button>
+                <AddCircleIcon sx={{ fontSize: "medium" }} />
+                <Button onClick={() => navigate("/home")} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
+                    Create
+                </Button>
+                <LogoutIcon sx={{ fontSize: "medium" }} />
+                <Button onClick={logout} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
                     Logout
-                </Typography>
+                </Button>
             </Toolbar>
         </AppBar>
     );

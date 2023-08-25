@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import { Navbar } from "../components/Navbar";
+import { useMediaQuery } from "@mui/material";
 
 function Recipe() {
 
+    const isMobile = useMediaQuery("(max-width:600px)");
     let params = useParams();
 
     //useState hook to initialize a state variable (details) and a function used for updating value of details state (setDetails)
@@ -29,10 +31,10 @@ function Recipe() {
         <div>
             <Navbar />
             <div class="main">
-                <DetailWrapper>
+                <DetailWrapper >
                     <div>
                         <h1>{details.title}</h1>
-                        <img src={details.image} alt="food" />
+                        <img className="recipeImg" src={details.image} alt="food" />
                     </div>
                     <Info>
                         {/* when button clicked on setActiveTab to instructions and if activeTab is instructions then add the "active" class, else don't add a class  */}

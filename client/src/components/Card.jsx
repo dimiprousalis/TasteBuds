@@ -11,12 +11,14 @@ export default function MediaCard({ imageUrl, title, recipeURL }) {
     return (
 
         <Card sx={{
-            maxWidth: 345,
-            height: 290,
-            margin: '1rem 0',
+            maxWidth: 310,
+            height: 250,
+            margin: '8px 0',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            boxShadow: '0px 12px 20px rgba(0, 0, 0, .9)',
+            borderRadius: '10px',
         }}>
             <CardMedia
                 sx={{

@@ -9,8 +9,6 @@ const theme = createTheme({
             main: '#d81b60',
         },
         background: {
-            // default: '#e4e2e2',
-            default: '#000000',
             alt: '#747071',
         },
     },
@@ -27,7 +25,19 @@ const theme = createTheme({
             styleOverrides: { 
               root: { minWidth: 0 } 
             } 
-        }
+        },
+        
+
+        MuiDrawer: {
+            styleOverrides: {
+              paper: {
+                background: "linear-gradient(to right, #3e5f30, #61914c)",
+              }
+            }
+        },
+
+
+        
     },
     
 })

@@ -36,19 +36,21 @@ function Popular() {
 
     return (
         <div>
+            <h3>Popular Picks</h3>
             <Wrapper>
-                <h3>Popular Picks</h3>
                 {/*Create a slider/carousel with Splide and customize with options*/}
                 <Splide options={{
                     perPage: 4,
+                    padding: "20px",
                     arrows: true,
                     pagination: false,
                     drag: "free",
-                    gap: "2%",
+                    gap: "3%",
                     height: '100%',
+                    width: '100%',
                     breakpoints: {
                         600: {
-                            perPage: 3,
+                            perPage: 2,
 
                         },
                     },
@@ -58,7 +60,7 @@ function Popular() {
                         return (
                             //SplideSlide represent the individual slide(Card) within the slider/carousel
                             <SplideSlide key={recipe.id}>
-                                 <Card imageUrl={recipe.image} title={recipe.title} recipeURL ={"/recipe/" + recipe.id} />
+                                <Card imageUrl={recipe.image} title={recipe.title} recipeURL={"/recipe/" + recipe.id} />
                             </SplideSlide>
                         );
                     })}
@@ -69,7 +71,10 @@ function Popular() {
 }
 
 const Wrapper = styled.div`
-margin: 1rem 0rem;`
+margin: 1rem 0rem;
+background: rgba(0,0,0,.1);
+display: flex;
+justify-content: center;
+border-radius: 10px;`
 
 export default Popular
-

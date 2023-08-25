@@ -55,7 +55,7 @@ function Index() {
                 >
                     <div>
                         {showSignupForm ? <SignupForm /> : <LoginForm />}
-                        <Button variant="outlined" onClick={toggleSignupForm}>
+                        <Button onClick={toggleSignupForm} sx = {{ fontSize: ".9rem", border: "2px solid black", fontWeight: "bold", }}>
                             {showSignupForm ? 'Existing User' : 'Create Account'}
                         </Button>
                     </div>

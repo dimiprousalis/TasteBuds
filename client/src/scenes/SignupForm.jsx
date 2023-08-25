@@ -3,9 +3,8 @@ import {
   Box,
   Button,
   TextField,
-  Typography,
 } from "@mui/material";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Formik } from "formik";
 const api_base = "http://localhost:3001"
@@ -102,9 +101,10 @@ const SignupForm = () => {
             }}
           >
             <>
-            <h1>Welcome</h1>
+              <h1>Welcome</h1>
               <TextField
                 label="Username"
+                variant="filled"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.username}
@@ -113,10 +113,11 @@ const SignupForm = () => {
                   Boolean(touched.username) && Boolean(errors.username)
                 }
                 helperText={touched.username && errors.username}
-                sx={{ gridColumn: "span 2", background: "rgba(255,255,255,.5)", borderRadius: 1, }}
+                sx={{ gridColumn: "span 2", background: "rgba(255,255,255,.9)", borderRadius: 1, }}
               />
               <TextField
                 label="Email"
+                variant="filled"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.email}
@@ -125,10 +126,11 @@ const SignupForm = () => {
                   Boolean(touched.email) && Boolean(errors.email)
                 }
                 helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 2", background: "rgba(255,255,255,.5)", borderRadius: 1, }}
+                sx={{ gridColumn: "span 2", background: "rgba(255,255,255,.9)", borderRadius: 1, }}
               />
               <TextField
                 label="Password"
+                variant="filled"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.password}
@@ -138,10 +140,11 @@ const SignupForm = () => {
                   Boolean(touched.password) && Boolean(errors.password)
                 }
                 helperText={touched.password && errors.password}
-                sx={{ gridColumn: "span 2", background: "rgba(255,255,255,.5)", borderRadius: 1, }}
+                sx={{ gridColumn: "span 2", background: "rgba(255,255,255,.9)", borderRadius: 1, }}
               />
               <TextField
                 label="Re-enter Password"
+                variant="filled"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.confirmPassword}
@@ -151,7 +154,7 @@ const SignupForm = () => {
                   Boolean(touched.confirmPassword) && Boolean(errors.confirmPassword)
                 }
                 helperText={touched.confirmPassword && errors.confirmPassword}
-                sx={{ gridColumn: "span 2", background: "rgba(255,255,255,.5)", borderRadius: 1, }}
+                sx={{ gridColumn: "span 2", background: "rgba(255,255,255,.9)", borderRadius: 1, }}
               />
               <Button
                 type="submit"

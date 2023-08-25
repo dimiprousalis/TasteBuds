@@ -16,7 +16,7 @@ function Cuisine() {
     //fetch api by cuisine type (mexican, italian, etc)
     const getCuisine = async (name) => {
         //---------------- CHANGE BACK from 3 to remove number----------------//
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}&number=3`)
+        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}&number=10`)
         const recipes = await data.json();
         setCuisine(recipes.results);
     }
@@ -46,9 +46,10 @@ function Cuisine() {
 
 const Grid = styled.div`
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(10rem, 100fr));
 grid-gap:3rem;
-padding: 1rem;
+padding: 0 15%;
+width:100%;
 `;
 
 

@@ -30,11 +30,10 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-margin: 0rem 15%;
+margin: 0 25%;
 div {
     position: relative;
     width: 100%;
-    margin: 1rem;
 }
 input {
     border: none;
@@ -46,6 +45,8 @@ input {
     border-radius: 1rem;
     outline: none;
     width: 100%;
+    height: 40px;
+    margin-top: 10px;
 }
 svg {
     position: absolute;
@@ -53,6 +54,7 @@ svg {
     left: 0%;
     transform: translate(100%, -50%);
     color: white;
+ 
 }
 `;
 

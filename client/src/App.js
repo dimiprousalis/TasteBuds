@@ -9,7 +9,6 @@ import Recipe from "./pages/Recipe";
 function App() {
   return (
     <div className="App">
-      {/* <PersistentDrawerLeft /> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

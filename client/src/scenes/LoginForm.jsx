@@ -3,9 +3,8 @@ import {
     Box,
     Button,
     TextField,
-    Typography
 } from "@mui/material";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Formik } from "formik";
 import { useCookies } from "react-cookie";
@@ -13,9 +12,8 @@ const api_base = "http://localhost:3001"
 
 /* SCHEMAS */
 const loginSchema = yup.object().shape({
-    // email: yup.string().email("invalid email").required("required"),
-    username: yup.string().required("required"),
-    password: yup.string().required("required"),
+    username: yup.string().required("Required"),
+    password: yup.string().required("Required"),
 });
 
 /* INITIAL VALUES */
@@ -88,6 +86,7 @@ const LoginForm = () => {
                             <h1>Welcome Back</h1>
                             <TextField
                                 label="Username"
+                                variant="filled"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
                                 value={values.username}
@@ -96,10 +95,11 @@ const LoginForm = () => {
                                     Boolean(touched.username) && Boolean(errors.username)
                                 }
                                 helperText={touched.username && errors.username}
-                                sx={{ gridColumn: "span 4", borderRadius: 1, background: "rgba(255,255,255,.5)", }}
+                                sx={{ gridColumn: "span 4", borderRadius: 1, background: "rgba(255,255,255,.9)", }}
                             />
                             <TextField
                                 label="Password"
+                                variant="filled"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
                                 value={values.password}
@@ -109,7 +109,7 @@ const LoginForm = () => {
                                     Boolean(touched.password) && Boolean(errors.password)
                                 }
                                 helperText={touched.password && errors.password}
-                                sx={{ gridColumn: "span 4", borderRadius: 1, background: "rgba(255,255,255,.5)", }}
+                                sx={{ gridColumn: "span 4", borderRadius: 1, background: "rgba(255,255,255,.9)", }}
                             />
 
                             <Button

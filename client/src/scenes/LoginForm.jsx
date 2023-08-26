@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Formik } from "formik";
 import { useCookies } from "react-cookie";
+
 const api_base = "http://localhost:3001"
 
 /* SCHEMAS */

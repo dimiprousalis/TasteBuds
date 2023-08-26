@@ -7,8 +7,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Formik } from "formik";
-const api_base = "http://localhost:3001"
 
+const api_base = "http://localhost:3001"
 
 
 /* SCHEMAS */

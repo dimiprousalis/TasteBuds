@@ -17,5 +17,6 @@ app.use(cors());
 app.use("/", userRouter);
 
 
-app.listen(3001, () => console.log("Server running, better go catch it"))
-
+app.listen(process.env.PORT || "3001", () => {
+    console.log(`server is running on ${process.env.PORT}`);
+  });

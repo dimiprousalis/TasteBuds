@@ -8,7 +8,10 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Formik } from "formik";
 
-const api_base = "http://localhost:3001"
+const api_base =
+  process.env.REACT_APP_NODE_ENV === "development"
+    ? "http://localhost:3001"
+    : "https://tastebuds-production.up.railway.app";
 
 
 /* SCHEMAS */
@@ -63,7 +66,7 @@ const SignupForm = () => {
     if (req.status === 400) {
       alert(res.message)
     } else {
-      navigate("/login");
+      navigate("/home");
     }
   };
 

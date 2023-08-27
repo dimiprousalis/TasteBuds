@@ -9,7 +9,10 @@ import * as yup from "yup";
 import { Formik } from "formik";
 import { useCookies } from "react-cookie";
 
-const api_base = "http://localhost:3001"
+const api_base =
+  process.env.REACT_APP_NODE_ENV === "development"
+    ? "http://localhost:3001"
+    : "https://tastebuds-production.up.railway.app";
 
 /* SCHEMAS */
 const loginSchema = yup.object().shape({
@@ -53,7 +56,6 @@ const LoginForm = () => {
     /* HANDLER */
     const handleFormSubmit = async (values, onSubmitProps) => {
         await login(values, onSubmitProps);
-
     };
 
     return (

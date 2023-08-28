@@ -12,7 +12,7 @@ import { useCookies } from "react-cookie";
 const api_base =
   process.env.REACT_APP_NODE_ENV === "development"
     ? "http://localhost:3001"
-    : "https://tastebuds-production.up.railway.app";
+    : "https://tastebuds-api.up.railway.app";
 
 /* SCHEMAS */
 const loginSchema = yup.object().shape({
@@ -92,7 +92,7 @@ const LoginForm = () => {
                                 variant="filled"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.username}
+                                value={values.username.toLocaleLowerCase()}
                                 name="username"
                                 error={
                                     Boolean(touched.username) && Boolean(errors.username)

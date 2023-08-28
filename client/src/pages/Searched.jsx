@@ -16,7 +16,7 @@ function Searched() {
     //fetch api by searched recipe
     const getSearched = async (name) => {
         //---------------- CHANGE BACK from 3 to remove number----------------//
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=3`)
+        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=10`)
         const recipes = await data.json();
         setSearchedRecipes(recipes.results);
         ;

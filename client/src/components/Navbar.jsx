@@ -20,7 +20,7 @@ export const Navbar = () => {
     return (
         <AppBar
             position="sticky">
-            <Toolbar sx={{ display: 'flex', justifyContent: "flex-start" }}>
+            <Toolbar sx={{ display: 'flex', justifyContent: "flex-start", boxShadow: '0px 10px 30px rgba(0, 0, 0, .9)', }}>
                 <HomeIcon sx={{ fontSize: "medium" }} />
                 <Button onClick={() => navigate("/home")} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
                     Home

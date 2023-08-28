@@ -23,7 +23,7 @@ const theme = createTheme({
         },
         MuiButton: { 
             styleOverrides: { 
-              root: { minWidth: 0 } 
+              root: { minWidth: 0, fontFamily: 'Roboto Condensed' } 
             } 
         },
         

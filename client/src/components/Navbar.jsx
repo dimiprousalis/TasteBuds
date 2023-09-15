@@ -26,11 +26,11 @@ export const Navbar = () => {
                     Home
                 </Button>
                 <FavoriteIcon sx={{ fontSize: "medium" }} />
-                <Button onClick={() => navigate("/home")} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
+                <Button onClick={() => navigate("/saved")} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
                     Saved
                 </Button>
                 <AddCircleIcon sx={{ fontSize: "medium" }} />
-                <Button onClick={() => navigate("/home")} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
+                <Button onClick={() => navigate("/create")} sx={{ paddingLeft: 1, paddingRight: 3, color: "white", fontSize: ".8rem" }}>
                     Create
                 </Button>
                 <LogoutIcon sx={{ fontSize: "medium" }} />

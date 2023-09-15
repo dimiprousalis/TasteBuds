@@ -2,11 +2,9 @@ import { useEffect, useState } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import { Navbar } from "../components/Navbar";
-import { useMediaQuery } from "@mui/material";
 
 function Recipe() {
 
-    const isMobile = useMediaQuery("(max-width:600px)");
     let params = useParams();
 
     //useState hook to initialize a state variable (details) and a function used for updating value of details state (setDetails)
@@ -27,11 +25,12 @@ function Recipe() {
         fetchDetails()
     }, [params.name]);
 
+    
     return (
-        <div>
+        <div className="recipeMain">
             <Navbar />
             <div class="main">
-                <DetailWrapper >
+                <DetailWrapper className = "recipes" >
                     <div>
                         <h1>{details.title}</h1>
                         <img className="recipeImg" src={details.image} alt="food" />
@@ -52,7 +51,7 @@ function Recipe() {
                             Ingredients
                         </Button>
                         {activeTab === "instructions" && (
-                            <div>
+                            <div >
                                 {/* since details.summary has html, use dangerouslySetInnerHTML to render out the html data from the api*/}
                                 <h4 dangerouslySetInnerHTML={{ __html: details.summary }}></h4>
                                 <h4 dangerouslySetInnerHTML={{ __html: details.instructions }}></h4>
@@ -76,6 +75,7 @@ function Recipe() {
 const DetailWrapper = styled.div`
     margin-top: 2rem;
     margin-bottom: 2rem;
+    padding: 0 10%;
     display: flex;
     .active {
         background: linear-gradient(35deg, #494949, #313131);
@@ -95,16 +95,17 @@ const DetailWrapper = styled.div`
 `;
 
 const Button = styled.button`
-    padding: 1rem 2rem;
+    padding: 10px 20px;
     color: #313131;
     background: white;
     border: 2px solid black;
-    margin-right: 2rem;
+    margin: 3px;
     font-weight: 600;
 `;
 
 const Info = styled.div`
     margin-left: 1rem;
 `;
+
 
 export default Recipe

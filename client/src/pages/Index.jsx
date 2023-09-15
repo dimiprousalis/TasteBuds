@@ -71,7 +71,7 @@ function Index() {
                     top: 0,
                 }}
             >
-                <Typography fontSize={isMobile ? "4.5rem" : "8vw"} fontFamily={"Lobster, cursive"}>
+                <Typography fontSize={isMobile ? "4.5rem" : "8vw"} fontFamily={"Lobster, cursive"} lineHeight="5rem">
                     Taste Buds
                 </Typography>
                 <Box

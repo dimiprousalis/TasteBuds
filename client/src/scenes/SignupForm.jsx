@@ -91,7 +91,6 @@ const SignupForm = () => {
         handleSubmit,
       }) => (
         <form onSubmit={handleSubmit}>
-
           <Box
             gap="10px"
             sx={{

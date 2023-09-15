@@ -27,7 +27,7 @@ function Cuisine() {
     }, [params.type]);
 
     return (
-        <div>
+        <div className="cuisineMain">
             <Navbar />
             <div class="main">
                 <Search />

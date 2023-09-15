@@ -42,7 +42,6 @@ flex-firection: column;
 justify-content: center;
 align-items: center;
 border-radius: 50%;
-// margin-right:1rem;
 text-decoration: nonw;
 background: linear-gradient(35deg, #494949, #313131);
 width: 70px;

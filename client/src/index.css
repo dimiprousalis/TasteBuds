@@ -5,10 +5,8 @@
 }
 
 body {
-  background-image: url(./assets/foodpic10.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-
+  margin: 0;
+  height: 100%;
 }
 
 h2 {
@@ -32,13 +30,26 @@ a {
 }
 
 .main {
-  padding: 0 10vw;
+  padding: 20px 10vw;
 }
 
 .landingMain {
+  background-image: url(./assets/vidpic.png);
+  background-size: cover;
+  background-position-x: right;
   width: 100%;
   height: 100%;
-  position: fixed;
+}
+
+.homeMain,
+.cuisineMain,
+.createMain,
+.recipeMain,
+.savedMain,
+.searchedMain {
+  background-image: url(./assets/foodpic10.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .overlay {
@@ -48,17 +59,17 @@ a {
   position: absolute;
 }
 
-
 video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
 }
 
 .recipeImg {
-  width: 400px;
+  width: 450px;
+  padding-bottom: 15px;
 }
-
 
 @media (max-width: 800px) {
   h2 {
@@ -67,7 +78,18 @@ video {
   }
 
   .main {
-    padding: 10px;
+    padding: 20px 5vw;
+  }
+
+}
+
+@media (max-width: 1000px) {
+  .recipes {
+    flex-direction: column;
+  }
+
+  .recipeImg {
+    width: 100%;
   }
 }
 

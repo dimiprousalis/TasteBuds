@@ -29,7 +29,7 @@ function Searched() {
 
 
     return (
-        <div>
+        <div className="searchedMain">
             <Navbar />
             <div class="main">
                 <Search />

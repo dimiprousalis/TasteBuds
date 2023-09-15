@@ -8,7 +8,7 @@ import Dessert from "../components/Dessert";
 
 function Home() {
   return (
-    <div>
+    <div className="homeMain">
       <Navbar />
       <div class="main">
         <Search />

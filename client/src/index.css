@@ -43,13 +43,22 @@ a {
 
 .homeMain,
 .cuisineMain,
-.createMain,
 .recipeMain,
 .savedMain,
 .searchedMain {
   background-image: url(./assets/foodpic10.jpg);
   background-size: cover;
   background-attachment: fixed;
+}
+
+.createMain {
+  background-image: url(./assets/foodpic.jpg);
+  background-size: cover;
+  /* background-attachment: fixed; */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
 }
 
 .overlay {

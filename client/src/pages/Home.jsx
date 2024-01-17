@@ -10,7 +10,7 @@ function Home() {
   return (
     <div className="homeMain">
       <Navbar />
-      <div class="main">
+      <div className="main">
         <Search />
         <Category />
         <Veggie />

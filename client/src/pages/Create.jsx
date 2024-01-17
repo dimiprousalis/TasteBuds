@@ -1,15 +1,21 @@
 import React from 'react'
 import { Navbar } from "../components/Navbar";
+import RecipeForm from '../scenes/RecipeForm';
+
 
 function Create() {
+
     return (
         <div className="createMain">
             <Navbar />
-            <div class="main">
-                <h1>Coming soon...</h1>
+            <div className="main">
+                <RecipeForm/>
             </div>
         </div>
     )
 }
 
 export default Create
+
+
+

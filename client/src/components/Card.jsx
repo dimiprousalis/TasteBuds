@@ -33,9 +33,9 @@ export default function MediaCard({ imageUrl, title, recipeURL }) {
                     minHeight: 50,
                 }}>
                 <Typography >
-                    <h2>
+                    
                         {title}
-                    </h2>
+                    
                 </Typography>
             </CardContent>
             <CardActions

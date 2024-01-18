@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navbar } from "../components/Navbar";
 import RecipeForm from '../scenes/RecipeForm';
+import ImageUpload from '../components/ImageUpload';
 
 
 function Create() {
@@ -10,6 +11,7 @@ function Create() {
             <Navbar />
             <div className="main">
                 <RecipeForm/>
+                <ImageUpload/>
             </div>
         </div>
     )

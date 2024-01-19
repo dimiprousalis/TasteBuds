@@ -1,11 +1,11 @@
-import express from "express";
+import express, { json } from "express";
 import cors from 'cors';
 import connectDB from './config/database.js';
 import dotenv from 'dotenv';
 import { userRouter } from './routes/auth.js';
 import { recipeRouter } from './routes/recipes.js';
-import { RecipeModel } from "./models/Recipes.js";
-import multer from 'multer'
+import multer, { memoryStorage } from "multer";
+import { getUserPresignedUrls, uploadToS3 } from "./s3.js";
 
 // .env config
 dotenv.config({ path: './config/.env' });
@@ -14,36 +14,48 @@ connectDB()
 
 const app = express();
 
+// Middleware for parsing JSON and handling CORS
 app.use(express.json());
 app.use(cors());
+// Use the defined routers for user and recipe routes
 app.use("/", userRouter, recipeRouter);
 
-//-----------------adding here
-const storage = multer.memoryStorage()
-const upload = multer({ storage: storage })
+//----------------------ADDED HERE------------------------------//
 
+// Configure multer with memory storage
+const storage = memoryStorage();
+const upload = multer({ storage });
 
+//--------------------------GET------------------------------//
 
-app.get("/create/api/posts",  async (req, res) => {
-  // const posts = await prisma.posts.findMany({orderBy: [{ created: 'desc'}]})
-  const posts = await RecipeModel.find().sort({created: 'desc'})
-  res.send(posts)
-})
+// POST endpoint for uploading images to S3
+app.post("/images", upload.single("image"), (req, res) => {
+  const { file } = req;
+  const userId = req.headers["x-user-id"];
+  // Check if required data is present
+  if (!file || !userId) return res.status(400).json({ message: "Bad request" });
 
+  const { error, key } = uploadToS3({ file, userId });
+  if (error) return res.status(500).json({ message: error.message });
 
-app.post('/create/api/posts', upload.single('image'), async (req, res) => {
- console.log("req.body", req.body)
- console.log("req.file", req.body)
-  res.send({})
-})
+  return res.status(201).json({ key });
+});
+//--------------------------POST------------------------------//
 
-app.delete("/create/api/posts/:id", async (req, res) => {
-const id=+req.params.id
-  res.send({})
-})
+// GET endpoint for retrieving user-specific image URLs from S3
+app.get("/images", async (req, res) => {
+  const userId = req.headers["x-user-id"];
+  // Check if user ID is present
+  if (!userId) return res.status(400).json({ message: "Bad request" });
+  // Get presigned URLs for user's images from S3
+  const { error, presignedUrls } = await getUserPresignedUrls(userId);
+  if (error) return res.status(400).json({ message: error.message });
+  // Send the presigned URLs in the response
+  return res.json(presignedUrls);
+});
 
-//--------------------------------
+//--------------------------------------------------------//
 
 app.listen(process.env.PORT || "3001", () => {
-    console.log(`server is running on ${process.env.PORT}`);
-  });
+  console.log(`server is running on ${process.env.PORT}`);
+});

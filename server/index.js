@@ -6,6 +6,7 @@ import { userRouter } from './routes/auth.js';
 import { recipeRouter } from './routes/recipes.js';
 import multer, { memoryStorage } from "multer";
 import { getUserPresignedUrls, uploadToS3 } from "./s3.js";
+import sharp from 'sharp';
 
 // .env config
 dotenv.config({ path: './config/.env' });
@@ -26,30 +27,40 @@ app.use("/", userRouter, recipeRouter);
 const storage = memoryStorage();
 const upload = multer({ storage });
 
-//--------------------------GET------------------------------//
+//--------------------------POST------------------------------//
 
 // POST endpoint for uploading images to S3
-app.post("/images", upload.single("image"), (req, res) => {
+app.post("/images", upload.single("image"), async (req, res) => {
   const { file } = req;
   const userId = req.headers["x-user-id"];
+  const mimeType = req.file.mimetype
+
   // Check if required data is present
   if (!file || !userId) return res.status(400).json({ message: "Bad request" });
 
-  const { error, key } = uploadToS3({ file, userId });
+  //Resize image
+  const fileBuffer = await sharp(file.buffer)
+    .resize({ height: 1920, width: 1080, fit: "contain" })
+    .toBuffer()
+
+  const { error, key } = await uploadToS3({ fileBuffer, userId, mimeType });
   if (error) return res.status(500).json({ message: error.message });
 
   return res.status(201).json({ key });
 });
-//--------------------------POST------------------------------//
+//--------------------------GET------------------------------//
 
 // GET endpoint for retrieving user-specific image URLs from S3
 app.get("/images", async (req, res) => {
   const userId = req.headers["x-user-id"];
   // Check if user ID is present
   if (!userId) return res.status(400).json({ message: "Bad request" });
+
   // Get presigned URLs for user's images from S3
   const { error, presignedUrls } = await getUserPresignedUrls(userId);
+
   if (error) return res.status(400).json({ message: error.message });
+
   // Send the presigned URLs in the response
   return res.json(presignedUrls);
 });

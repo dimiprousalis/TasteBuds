@@ -30,15 +30,15 @@ const s3 = new S3Client({
 
 /*-------------------------- UPLOAD TO S3 -------------------------- */
 
-export const uploadToS3 = async ({ file, userId }) => {
+export const uploadToS3 = async ({ fileBuffer, userId, mimeType }) => {
     // Generate a unique key for the file in S3
     const key = `${userId}/${uuid()}`;
     // Create a command to put the object in S3
     const command = new PutObjectCommand({
         Bucket: bucketName,
         Key: key,
-        Body: file.buffer,
-        ContentType: file.mimetype,
+        Body: fileBuffer,
+        ContentType: mimeType
     });
     try {
         // Send the put object command to S3
